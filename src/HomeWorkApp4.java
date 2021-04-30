@@ -6,8 +6,9 @@ public class HomeWorkApp4 {
     public static class Lesson04 {
 
         public static char[][] map;
-        public static int mapSizeX;
-        public static int mapSizeY;
+        public static int mapSizeX = 5;
+        public static int mapSizeY = 8;
+        public static int victoryCondition = 4; //условие выигрыша
 
         public static char human = 'X';
         public static char ai = 'O';
@@ -17,8 +18,6 @@ public class HomeWorkApp4 {
         public static Random random = new Random();
 
         public static void createMap() {
-            mapSizeX = 3;
-            mapSizeY = 3;
             map = new char[mapSizeY][mapSizeX];
 
             for (int y = 0; y < mapSizeY; y++) {
@@ -43,7 +42,7 @@ public class HomeWorkApp4 {
             int y;
 
             do {
-                System.out.println("Enter your turn coordinates from 1 before " + mapSizeX + ":");
+                System.out.println("Enter your turn coordinates y[1;" + mapSizeY + "] and x[1;" + mapSizeX + "]:");
                 y = scanner.nextInt() - 1;
                 x = scanner.nextInt() - 1;
             } while (!isValidCell(y, x) || !isEmptyCell(y, x));
@@ -51,15 +50,25 @@ public class HomeWorkApp4 {
         }
 
         public static void aiTurn() {
-            int x;
             int y;
+            int x;
+            int[] arrayYXai = preWinningCombination(ai);
+            int[] arrayYXhuman = preWinningCombination(human);
 
-            do {
-                y = random.nextInt(mapSizeX); //[0;mapSize)
-                x = random.nextInt(mapSizeY);
-            } while (!isEmptyCell(y, x));
-            System.out.println("AI turn is [" + (y + 1) + ":" + (x + 1) + "]");
-            map[y][x] = ai;
+            if (isValidCell(arrayYXai[0], arrayYXai[1])){
+                System.out.println("AI turn is [" + (arrayYXai[0] + 1) + ":" + (arrayYXai[1] + 1) + "]");
+                map[arrayYXai[0]][arrayYXai[1]] = ai;
+            } else if (isValidCell(arrayYXhuman[0], arrayYXhuman[1])){
+                System.out.println("AI turn is [" + (arrayYXhuman[0] + 1) + ":" + (arrayYXhuman[1] + 1) + "]");
+                map[arrayYXhuman[0]][arrayYXhuman[1]] = ai;
+            } else {
+                do {
+                    y = random.nextInt(mapSizeY); //[0;mapSize)
+                    x = random.nextInt(mapSizeX);
+                } while (!isEmptyCell(y, x));
+                System.out.println("AI turn is [" + (y + 1) + ":" + (x + 1) + "]");
+                map[y][x] = ai;
+            }
         }
 
         public static boolean isValidCell(int y, int x) {
@@ -81,26 +90,191 @@ public class HomeWorkApp4 {
             return true;
         }
 
+        // определение победителя
         public static boolean isWin(char player) {
-            if (map[0][0] == player && map[0][1] == player && map[0][2] == player) return true;
-            if (map[1][0] == player && map[1][1] == player && map[1][2] == player) return true;
-            if (map[2][0] == player && map[2][1] == player && map[2][2] == player) return true;
+            int filledInRow = 0;
 
-            if (map[0][0] == player && map[1][0] == player && map[2][0] == player) return true;
-            if (map[0][1] == player && map[1][1] == player && map[2][1] == player) return true;
-            if (map[0][2] == player && map[1][2] == player && map[2][2] == player) return true;
+            // проходим по-горизонталям
+            for (int i = 0; i < mapSizeY; i++) {
+                for (int j = 0; j < mapSizeX; j++) {
+                    if (map[i][j] == player) {
+                        filledInRow++;
+                        if (filledInRow == victoryCondition) {
+                            return true;
+                        }
+                    } else {
+                        filledInRow = 0;
+                    }
+                }
+                filledInRow = 0;
+            }
 
-            if (map[0][0] == player && map[1][1] == player && map[2][2] == player) return true;
-            if (map[0][2] == player && map[1][1] == player && map[2][0] == player) return true;
+            //проходим по-вертикалям
+            for (int j = 0; j < mapSizeX; j++){
+                for (int i = 0; i < mapSizeY; i++){
+                    if (map[i][j] == player) {
+                        filledInRow++;
+                        if (filledInRow == victoryCondition) {
+                            return true;
+                        }
+                    } else {
+                        filledInRow = 0;
+                    }
+                }
+            filledInRow = 0;
+            }
 
+            //проходим по диагоналям под углом -45°
+            for (int numberDiagonals = -mapSizeX + 1; numberDiagonals < mapSizeY; numberDiagonals++) {
+                for (int i = 0; i < mapSizeY; i++) {
+                    for (int j = 0; j < mapSizeX; j++) {
+                        if (j == i - numberDiagonals) {
+                            if (map[i][j] == player) {
+                                filledInRow++;
+                                if (filledInRow == victoryCondition){
+                                    return true;
+                                }
+                            } else {
+                                filledInRow = 0;
+                            }
+                        }
+                    }
+                }
+                filledInRow = 0;
+            }
+
+            // проходим по диагоналям под углом 45°
+            for (int numberDiagonals = -mapSizeX + 1; numberDiagonals < mapSizeY; numberDiagonals++) {
+                for (int i = 0; i < mapSizeY; i++) {
+                    for (int j = 0; j < mapSizeX; j++) {
+                        if (j == i - numberDiagonals) {
+                            if (map[mapSizeY - i - 1][j] == player) {
+                                filledInRow++;
+                                if (filledInRow == victoryCondition){
+                                    return true;
+                                }
+                            } else {
+                                filledInRow = 0;
+                            }
+                        }
+                    }
+                }
+                filledInRow = 0;
+            }
             return false;
         }
 
-//    public static void createMap(int sizeX, int sizeY) {
-//        mapSizeX = sizeX;
-//        mapSizeY = sizeY;
-//        map = new char[mapSizeY][mapSizeX];
-//    }
+        //получение координат в предвыигрышной ситуации
+        public static int[] preWinningCombination (char player){
+            int[] arrayYX = new int[2];
+
+            // заполняем невалидными значениями по умолчанию
+            arrayYX[0] = mapSizeY;
+            arrayYX[1] = mapSizeX;
+            int filledInRow = 0;
+
+            // проходим по-горизонталям
+            for (int i = 0; i < mapSizeY; i++) {
+                for (int j = 0; j < mapSizeX; j++) {
+                    if (map[i][j] == player) {
+                        filledInRow++;
+                        if (filledInRow == victoryCondition - 1) {
+                            if(isValidCell(i, j + 1) && isEmptyCell(i, j+1)){
+                                arrayYX[0] = i;
+                                arrayYX[1] = j + 1;
+                                return arrayYX;
+                            } else if (isValidCell(i, j - victoryCondition + 1) && isEmptyCell(i, j - victoryCondition + 1)){
+                                arrayYX[0] = i;
+                                arrayYX[1] = j - victoryCondition + 1;
+                                return arrayYX;
+                            }
+                        }
+                    } else {
+                        filledInRow = 0;
+                    }
+                }
+                filledInRow = 0;
+            }
+
+            //проходим по-вертикалям
+            for (int j = 0; j < mapSizeX; j++){
+                for (int i = 0; i < mapSizeY; i++){
+                    if (map[i][j] == player) {
+                        filledInRow++;
+                        if (filledInRow == victoryCondition - 1) {
+                            if(isValidCell(i + 1, j) && isEmptyCell(i + 1, j)){
+                                arrayYX[0] = i + 1;
+                                arrayYX[1] = j;
+                                return arrayYX;
+                            } else if (isValidCell(i - victoryCondition + 1, j) && isEmptyCell(i - victoryCondition + 1, j)){
+                                arrayYX[0] = i - victoryCondition + 1;
+                                arrayYX[1] = j;
+                                return arrayYX;
+                            }
+                        }
+                    } else {
+                        filledInRow = 0;
+                    }
+                }
+                filledInRow = 0;
+            }
+
+            //проходим по диагоналям под углом -45°
+            for (int numberDiagonals = -mapSizeX + 1; numberDiagonals < mapSizeY; numberDiagonals++) {
+                for (int i = 0; i < mapSizeY; i++) {
+                    for (int j = 0; j < mapSizeX; j++) {
+                        if (j == i - numberDiagonals) {
+                            if (map[i][j] == player) {
+                                filledInRow++;
+                                if (filledInRow == victoryCondition - 1){
+                                    if (isValidCell(i + 1, j + 1) && isEmptyCell(i + 1, j + 1)){
+                                        arrayYX[0] = i + 1;
+                                        arrayYX[1] = j + 1;
+                                        return arrayYX;
+                                    } else if (isValidCell(i - victoryCondition + 1, j - victoryCondition + 1) && isEmptyCell(i - victoryCondition + 1, j - victoryCondition + 1)){
+                                        arrayYX[0] = i - victoryCondition + 1;
+                                        arrayYX[1] = j - victoryCondition + 1;
+                                        return arrayYX;
+                                    }
+                                }
+                            } else {
+                                filledInRow = 0;
+                            }
+                        }
+                    }
+                }
+                filledInRow = 0;
+            }
+
+            // проходим по диагоналям под углом 45°
+            for (int numberDiagonals = -mapSizeX + 1; numberDiagonals < mapSizeY; numberDiagonals++) {
+                for (int i = 0; i < mapSizeY; i++) {
+                    for (int j = 0; j < mapSizeX; j++) {
+                        if (j == i - numberDiagonals) {
+                            if (map[mapSizeY - i - 1][j] == player) {
+                                filledInRow++;
+                                if (filledInRow == victoryCondition - 1){
+                                    if (isValidCell(mapSizeY - i - 2, j + 1) && isEmptyCell(mapSizeY - i - 2, j + 1)){
+                                        arrayYX[0] = mapSizeY - i - 2;
+                                        arrayYX[1] = j + 1;
+                                        return arrayYX;
+                                    } else if (isValidCell(mapSizeY - i + victoryCondition - 2, j - victoryCondition + 1) && isEmptyCell(mapSizeY - i + victoryCondition - 2, j - victoryCondition + 1)){
+                                        arrayYX[0] = mapSizeY - i + victoryCondition - 2;
+                                        arrayYX[1] = j - victoryCondition + 1;
+                                        return arrayYX;
+                                    }
+                                }
+                            } else {
+                                filledInRow = 0;
+                            }
+                        }
+                    }
+                }
+                filledInRow = 0;
+            }
+
+            return arrayYX;
+        }
 
         public static void main(String[] args) {
             createMap();

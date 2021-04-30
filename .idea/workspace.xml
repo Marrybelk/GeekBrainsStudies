@@ -3,11 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="49b4ccd1-76f3-466e-936e-dcf297364515" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaLevel1/HomeWorkApp4$Lesson04.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaLevel1/HomeWorkApp4$Lesson04.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HomeWorkApp4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HomeWorkApp4.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints>
+      <file url="file://$PROJECT_DIR$/src/HomeWorkApp4.java" />
+    </disable_hints>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -27,8 +34,8 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/HomeWorkApp4.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1rOzAbPMYUiNaMqHeG8RqPrF8Xg" />
   <component name="ProjectLevelVcsManager">
@@ -106,7 +113,7 @@
       <workItem from="1618861790381" duration="415000" />
       <workItem from="1618862795442" duration="2542000" />
       <workItem from="1619096975464" duration="4192000" />
-      <workItem from="1619164188261" duration="19930000" />
+      <workItem from="1619164188261" duration="50604000" />
     </task>
     <servers />
   </component>
