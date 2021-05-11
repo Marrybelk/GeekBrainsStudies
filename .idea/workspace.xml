@@ -49,14 +49,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
   </component>
-  <component name="RunManager" selected="Application.HomeWorkApp5">
-    <configuration name="HomeWorkApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="HomeWorkApp" />
-      <module name="JavaLevel1" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.HomeWorkApp6">
     <configuration name="HomeWorkApp2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="HomeWorkApp2" />
       <module name="JavaLevel1" />
@@ -85,13 +78,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HomeWorkApp6" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HomeWorkApp6" />
+      <module name="JavaLevel1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.HomeWorkApp6" />
         <item itemvalue="Application.HomeWorkApp5" />
         <item itemvalue="Application.HomeWorkApp4$Lesson04" />
         <item itemvalue="Application.HomeWorkApp3" />
         <item itemvalue="Application.HomeWorkApp2" />
-        <item itemvalue="Application.HomeWorkApp" />
       </list>
     </recent_temporary>
   </component>
@@ -109,6 +120,7 @@
       <workItem from="1619164188261" duration="52447000" />
       <workItem from="1620135972446" duration="7180000" />
       <workItem from="1620235632609" duration="610000" />
+      <workItem from="1620751927677" duration="2518000" />
     </task>
     <servers />
   </component>
