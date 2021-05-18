@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="49b4ccd1-76f3-466e-936e-dcf297364515" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaLevel1/HomeWorkApp6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaLevel1/HomeWorkApp6.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,11 +48,19 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
-  <component name="RunManager" selected="Application.HomeWorkApp6">
-    <configuration name="HomeWorkApp2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="HomeWorkApp2" />
+  <component name="RunManager" selected="Application.Battle">
+    <configuration name="Battle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HomeWorkApp7.Battle" />
       <module name="JavaLevel1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="HomeWorkApp7.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -86,13 +93,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Battle" />
         <item itemvalue="Application.HomeWorkApp6" />
         <item itemvalue="Application.HomeWorkApp5" />
         <item itemvalue="Application.HomeWorkApp4$Lesson04" />
         <item itemvalue="Application.HomeWorkApp3" />
-        <item itemvalue="Application.HomeWorkApp2" />
       </list>
     </recent_temporary>
   </component>
@@ -113,6 +131,7 @@
       <workItem from="1620751927677" duration="3815000" />
       <workItem from="1621259856150" duration="78000" />
       <workItem from="1621259975559" duration="5000" />
+      <workItem from="1621260726269" duration="15284000" />
     </task>
     <servers />
   </component>
